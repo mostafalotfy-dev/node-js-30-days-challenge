@@ -1,0 +1,16 @@
+{
+  "name": "day-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Day 2/app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Mostafa Lotfy",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
