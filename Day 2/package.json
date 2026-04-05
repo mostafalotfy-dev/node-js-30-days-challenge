@@ -2,7 +2,7 @@
   "name": "day-2",
   "version": "1.0.0",
   "description": "",
-  "main": "Day 2/app.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },

@@ -1,0 +1,18 @@
+{
+  "name": "day-3",
+  "version": "1.0.0",
+  "description": "Express.js, or simply Express, is a **minimal and flexible Node.js web application framework** that provides a robust set of features for web and mobile applications. It is the de facto standard server framework for Node.js.",
+  "main": "./Day 3/app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
