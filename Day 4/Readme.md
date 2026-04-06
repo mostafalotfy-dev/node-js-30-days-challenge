@@ -364,11 +364,11 @@ const shopRoutes = require("./routes/shop");
 - **`adminData`** and **`shopRoutes`**: Import the route handlers from separate files to keep the code modular.
 
 ```js
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 app.set("views", "views");
 ```
-- **`app.set("view engine", "pug")`**: Tells Express to use **Pug** as its templating engine. When `res.render()` is called, Express will look for `.pug` files.
-- **`app.set("views", "views")`**: Tells Express that template files are located in the `views/` folder (this is the default, but it's good to set it explicitly).
+- **`app.set("view engine", "ejs")`**: Tells Express to use **EJS** as its templating engine. (Note: You can switch this to `pug` or `hbs` if those engines are configured).
+- **`app.set("views", "views")`**: Tells Express that template files are located in the `views/` folder.
 
 ```js
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -386,11 +386,14 @@ app.use("/", shopRoutes);
 
 ```js
 app.use((_req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  res.status(404).render("404", {
+    pageTitle: "Page Not Found",
+    path: ""
+  });
 });
 app.listen(3000);
 ```
-- **404 Handler**: This is a catch-all middleware. If no previous route matched the request, this sends a `404.html` page with a 404 status code.
+- **404 Handler**: Instead of `sendFile()`, we now use `render()` to show a dynamic 404 page using the active templating engine.
 - **`app.listen(3000)`**: Starts the server on port 3000.
 
 ---
@@ -410,11 +413,18 @@ const products = [];
 
 ```js
 router.get("/add-product", (_req, res) => {
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+  res.render("add-product", {
+    pageTitle: "Add Product",
+    docTitle: "Add Product",
+    path: "/admin/add-product",
+    formsCSS: true,
+    productCSS: true,
+    activeAddProduct: true
+  });
 });
 ```
 - Handles **GET** requests to `/admin/add-product`.
-- Sends the `add-product.html` file as the response — this is the form where users can add new products.
+- **`res.render()`**: Renders the `add-product` template and passes configuration data like `path` and `pageTitle`.
 
 ```js
 router.post("/add-product", (req, res) => {
