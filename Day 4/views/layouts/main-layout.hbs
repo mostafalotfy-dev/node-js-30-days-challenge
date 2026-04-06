@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{pageTitle}}</title>
+  {{#if formsCSS}}
+  <link rel="stylesheet" href="/css/main.css">
+  {{/if}}
+  {{#if productCSS}}
+  <link rel="stylesheet" href="/css/product.css">
+  {{/if}}
+</head>
+
+<body>
+  <header class="main-header">
+    <nav class="main-header__nav">
+      <ul class="main-header__item-list"></ul>
+      <li class="main-header__item"><a href="/" class="{{pathExists}}">Shop</a></li>
+      <li class="main-header__item"><a href="/admin/add-product" class="{{pathExists}}">Add Product</a></li>
+    </nav>
+  </header>
+  <main>{{{body}}}</main>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+extends layouts/main-layout
+block styles
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        if prods.length > 0
+            .grid
+                each product in prods
+                    article.card.product-item
+                        header.card__header
+                                h1.product__title #{product.title}
+                                .card__image
+                                    img(src="/images/book.jpg", alt="Book")
+                                .card__content 
+                                    p.product__price $19.99
+                                    p.product__description A very interesting book about all that you need to know about the world.
+                                .card__actions
+                                    a.btn(href="/cart") Add to Cart 
+        else 
+            h1 No Products Found!                       
