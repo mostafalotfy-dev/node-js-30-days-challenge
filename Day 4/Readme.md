@@ -493,31 +493,61 @@ module.exports = path.dirname(require.main.filename);
 
 ---
 
-### `views/shop.pug` — Pug Template
+### `views/shop.pug` — Pug Template (Layout Inheritance)
 
 ```pug
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title #{docTitle}
-        link(rel="stylesheet", href="/css/main.css")
-        link(rel="stylesheet", href="/css/product.css")
-    body
-        header.main-header
-            ul.main-header__nav
-                li.main-header__item
-                    a.active(href="/") Shop
-                li.main-header__item
-                    a(href="/admin/add-product") Add Product
-        main
+extends layouts/main-layout
+
+block styles
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        if prods.length > 0
             .grid
-                article.card.product-item
+                each product in prods
+                    article.card.product-item
+                        header.card__header
+                                h1.product__title #{product.title}
+                                .card__image
+                                    img(src="/images/book.jpg", alt="Book")
+                                //- ... (rest of card structure)
+        else 
+            h1 No Products Found!                       
 ```
-- **Indentation-based syntax**: Pug uses indentation instead of closing tags. Each nested element is indented by one level.
-- **`#{docTitle}`**: Outputs the value of the `docTitle` variable passed from `res.render()`.
-- **`.main-header`**: A shorthand for `<div class="main-header">`. The dot `.` creates a class, and `header.main-header` creates `<header class="main-header">`.
-- **`a.active(href="/")`**: Creates `<a class="active" href="/">`. Attributes go inside parentheses `()`.
-- **`.grid`**: Shorthand for `<div class="grid">`.
-- **`article.card.product-item`**: Creates `<article class="card product-item">` — multiple classes are chained with dots.
+- **`extends layouts/main-layout`**: Inherits the shell from the base layout.
+- **`block content`**: Injects page-specific content into the layout's dynamic placeholder.
+- **`each product in prods`**: Pug's built-in loop to iterate over the data passed from Express.
+- **`if / else`**: Handles conditional rendering based on data availability.
+
+---
+
+### `views/shop.ejs` — EJS Template (With Includes)
+
+```ejs
+<%- include("includes/head.ejs") %> 
+<link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <%- include("includes/nav.ejs")  %> 
+<main>
+    <% if (hasProducts) { %>
+    <div class="grid">
+        <% prods.forEach(product => { %>
+        <article class="card product-item">
+            <header class="card__header">
+                <h1 class="product__title"><%= product.title %> </h1>
+            </header>
+            <!-- ... -->
+        </article>
+        <% }) %>
+    </div>
+    <%} else {%> 
+    <h1>No Products Found!</h1>
+    <% } %>
+</main>
+<%- include("includes/end.ejs")  %> 
+```
+- **`<%- include(...) %>`**: Reuses common HTML blocks (head, navigation, footer) across multiple pages.
+- **Control Flow**: Uses standard JavaScript `if` and `forEach` inside `<% %>` tags to manage dynamic content.
+- **`<%-` vs `<%=`**: `<%-` renders raw HTML (useful for including partials), while `<%=` escapes HTML for safety.
