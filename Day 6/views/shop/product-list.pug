@@ -1,0 +1,22 @@
+extends ../layouts/main-layout
+block styles
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        if prods.length > 0
+            .grid
+                each product in prods
+                    article.card.product-item
+                        header.card__header
+                                h1.product__title #{product.title}
+                                .card__image
+                                    img(src=product.imageUrl, alt="Book")
+                                .card__content 
+                                    p.product__price $#{product.price}
+                                    p.product__description #{product.description}
+                                .card__actions
+                                    form(method='post' action="/add-to-cart")
+                                        a.btn(href="/cart") Add to Cart 
+        else 
+            h1 No Products Found!                       

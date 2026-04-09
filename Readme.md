@@ -10,9 +10,8 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 - [x] **[Day 3](./Day%203)**: Introduction to Express.js (Middleware, Routing, Static Files, and HTML).
 - [x] **[Day 4](./Day%204)**: Template Engines (EJS, Pug, and Handlebars).
 - [x] **[Day 5](./Day%205)**: The Model View Controller (MVC) pattern.
-- [ ] **Day 6**: Working with Dynamic Data & Advanced Routing.
-- [ ] **Day 7**: SQL & Databases (MySQL/Sequelize).
-
+- [x] **[Day 6](./Day%206)**: Enhancing the App
+- [ ] **Day 7**: Dynamic Routes & Advanced Models
 
 ---
 
@@ -48,6 +47,7 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 *   **Day 1-2**: Mastered the core Node.js request/response lifecycle and asynchronous filesystem operations.
 *   **Day 3-4**: Transitioned to Express.js for streamlined routing and explored various Templating Engines (EJS/Pug) for dynamic UI generation.
 *   **Day 5**: Implemented proper **MVC Architecture**, decoupling data logic into Models and request handling into Controllers, while persisting data in JSON files.
+*   **Day 6**: Mastered **Dynamic Content** rendering with EJS, including partials for UI consistency and shared data state across routes.
 
 
 ---
