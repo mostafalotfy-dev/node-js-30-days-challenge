@@ -93,8 +93,89 @@ NoSQL databases like **MongoDB**, **Redis**, and **Cassandra** offer high flexib
 
 ---
 
-## 🛠️ What's Next?
-Understanding these differences is crucial for choosing the right tool for your project. In the coming days, we will transition our Shop app from `products.json` to a real database to handle production-level traffic and data integrity!
+## 🛠️ Practical Implementation: Moving to MySQL
+
+Now that we understand the benefits of SQL, let's look at how we integrated it into our Shop application.
+
+### 1. Installation
+We use the `mysql2` package, which is a modern, fast MySQL driver for Node.js.
+```bash
+npm install --save mysql2
+```
+
+### 2. Database Connection Pool
+Instead of opening and closing a single connection for every request, we use a **Connection Pool**. This maintains a set of open connections that can be reused.
+
+In `util/database.js`:
+```javascript
+const mysql = require("mysql2");
+
+const pool = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    database: "node-complete",
+    password: "your_password",
+    port: 3306
+});
+
+module.exports = pool.promise();
+```
+> [!TIP]
+> Calling `.promise()` allows us to use modern `async/await` or `.then()/.catch()` syntax instead of traditional callbacks.
+
+### 3. SQL Schema
+To store our products, we created a table with the following structure:
+```sql
+CREATE TABLE products (
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  price DOUBLE NOT NULL,
+  description TEXT NOT NULL,
+  imageUrl VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX id_UNIQUE (id ASC)
+);
+```
+
+### 4. Updating the Model (`models/product.js`)
+We refactored our `Product` class to use SQL queries. Instead of writing to a simple JSON file, we now execute `INSERT` and `SELECT` statements.
+
+```javascript
+  save() {
+    return db.execute(
+      "INSERT INTO products (title, price, imageUrl, description) VALUES (?, ?, ?, ?)",
+      [this.title, this.price, this.imageUrl, this.description]
+    );
+  }
+
+  static fetchAll() {
+    return db.execute("SELECT * FROM products");
+  }
+```
+
+### 5. Handling Results in Controllers
+Since `db.execute()` returns a Promise, we handle it in our controllers using `.then()`:
+
+```javascript
+exports.getIndex = (req, res, next) => {
+  Product.fetchAll()
+    .then(([rows, fieldData]) => {
+      res.render("shop/index", {
+        prods: rows,
+        pageTitle: "Shop",
+        path: "/"
+      });
+    })
+    .catch(err => console.log(err));
+};
+```
+> [!NOTE]
+> `mysql2` returns an array where the first element (`rows`) contains the actual data from the database.
 
 ---
-*Which one will we choose? Stay tuned for Day 9!*
+
+## 🛠️ What's Next?
+In the coming days, we will transition our Shop app further from `products.json` to a real database to handle production-level traffic and data integrity!
+
+---
+*Stay tuned for Day 9!*
