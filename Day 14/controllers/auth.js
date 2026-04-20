@@ -4,22 +4,20 @@ const User = require("../models/user");
 const { MailerSend, EmailParams, Sender, Recipient } = require("mailersend");
 
 const mailerSend = new MailerSend({
-  apiKey: 'mlsn.af683e66990242777645cd7ee07c94b3431533db6cf6fe82818f4a52ebdd4715',
+  apiKey:
+    "mlsn.af683e66990242777645cd7ee07c94b3431533db6cf6fe82818f4a52ebdd4715",
 });
 
-const sentFrom = new Sender("MS_aByBEg@test-65qngkdjypjlwr12.mlsender.net", "mostafa");
-
-const recipients = [
-  new Recipient("mostafalotfy285@gmail.com", "Mostafa")
-];
-
-
+const sentFrom = new Sender(
+  "MS_aByBEg@test-65qngkdjypjlwr12.mlsender.net",
+  "mostafa",
+);
 
 exports.getLogin = (req, res, next) => {
   res.render("auth/login", {
     path: "/login",
     pageTitle: "Login",
-    isAuthenticated: false,
+    csrfToken:req.csrfToken()
   });
 };
 
@@ -27,7 +25,8 @@ exports.getSignup = (req, res, next) => {
   res.render("auth/signup", {
     path: "/signup",
     pageTitle: "Signup",
-    isAuthenticated: false,
+    
+    csrfToken:req.csrfToken()
   });
 };
 
@@ -65,6 +64,8 @@ exports.postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
+  const recipients = [new Recipient(email, "Mostafa")];
+
   if (password !== confirmPassword) {
     return res.redirect("/signup");
   }
@@ -84,29 +85,32 @@ exports.postSignup = (req, res, next) => {
       })
       .then((user) => {
         const emailParams = new EmailParams()
-  .setFrom(sentFrom)
-  .setTo(recipients)
-  .setSubject("This is a Subject")
-  .setHtml("<strong>This is the HTML content</strong>")
-  .setText("This is the text content");
+          .setFrom(sentFrom)
+          .setTo(recipients)
+          .setSubject("This is a Subject")
+          .setHtml("<strong>This is the HTML content</strong>")
+          .setText("This is the text content");
 
-mailerSend.email
-  .send(emailParams)
-  .then((response) => console.log(response))
-  .then(() => {
-    res.redirect("/login");
-      })
-  .catch((error) => console.log(error));  
+        mailerSend.email
+          .send(emailParams)
+          .then((response) => console.log(response))
+          .then(() => {
+            res.redirect("/login");
+          })
+          .catch((error) => console.log(error));
       })
       .catch((err) => {
         console.log(err);
       });
-      
-      
-      
-  });   
+  });
 };
-
+exports.getResetPassword = (req, res, next) => {
+  res.render("auth/reset", {
+    path: "/reset-password",
+    pageTitle: "Reset Password",
+    csrfToken:req.csrfToken()
+  });
+};
 exports.postLogout = (req, res, next) => {
   req.session.destroy((err) => {
     console.log(err);

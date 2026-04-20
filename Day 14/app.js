@@ -19,7 +19,7 @@ app.set("views", "views");
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const authRoutes = require("./routes/auth");
-
+const csurf = require("csurf");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -34,7 +34,7 @@ app.use(
     }),
   }),
 );
-
+const csrfToken = csurf()
 
 app.use((req, res, next) => {
   if (!req.session.user) {
@@ -48,6 +48,14 @@ app.use((req, res, next) => {
     .catch((err) => console.log(err));
 });
 
+app.use((req,res,next)=>{
+  app.locals.isLoggedIn = req.session.isLoggedIn;
+  
+  
+  app.locals.isAuthenticated = req.session.isLoggedIn;
+  next();
+});
+app.use(csrfToken)
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);

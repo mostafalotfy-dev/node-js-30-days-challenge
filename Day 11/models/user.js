@@ -49,9 +49,7 @@ userSchema.methods.addToCart = function (product) {
   this.cart = updatedCart;
   return this.save();
 };
-userSchema.methods.getCart = function(){
-  return this.populate('cart.items.productId')
-}
+
 userSchema.methods.removeFromCart = function (productId) {
   const updatedCartItems = this.cart.items.filter((item) => {
     return item.productId.toString() !== productId.toString();
@@ -66,7 +64,7 @@ userSchema.methods.clearCart = function () {
 };
 
 userSchema.methods.addOrder = function () {
-  return this.getCart()
+  return this.populate('cart.items.productId')
     .then((user) => {
       const products = user.cart.items.map((i) => {
         return { quantity: i.quantity, product: { ...i.productId._doc } };
