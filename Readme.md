@@ -10,18 +10,34 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 - [x] **[Day 3](./Day%203)**: Introduction to Express.js (Middleware, Routing, Static Files, and HTML).
 - [x] **[Day 4](./Day%204)**: Template Engines (EJS, Pug, and Handlebars).
 - [x] **[Day 5](./Day%205)**: The Model View Controller (MVC) pattern.
-- [x] **[Day 6](./Day%206)**: Enhancing the App
-- [ ] **Day 7**: Dynamic Routes & Advanced Models
+- [x] **[Day 6](./Day%206)**: Dynamic Content & EJS.
+- [x] **[Day 7](./Day%207)**: Working with Dynamic Data & Pug (MVC).
+
+### Week 2: Databases & State Management
+- [x] **[Day 8](./Day%208)**: Introduction to Databases (SQL vs. NoSQL).
+- [x] **[Day 9](./Day%209)**: Mastering Sequelize & MySQL.
+- [x] **[Day 10](./Day%2010)**: Deep Dive into MongoDB.
+- [x] **[Day 11](./Day%2011)**: Object Data Modeling with Mongoose.
+- [x] **[Day 12](./Day%2012)**: Sessions & Cookies for State Management.
+- [x] **[Day 13](./Day%2013)**: Authentication & Authorization Foundations.
+- [x] **[Day 14](./Day%2014)**: CSRF Protection & Security Enhancements.
+
+### Week 3: Advanced Features
+- [x] **[Day 15](./Day%2015)**: Advanced Auth: Emails & Password Resets.
+- [ ] **Day 16**: (In Progress)
 
 ---
 
 ## 🛠️ Tech Stack
 - **Runtime**: Node.js
 - **Framework**: Express.js
+- **Databases**: MySQL (Sequelize), MongoDB (Mongoose)
 - **Templating Engines**: EJS, Pug, Handlebars
+- **Security**: CSRF Protection, Password Hashing (bcrypt)
+- **Session Management**: express-session with MongoDB storage
+- **Communication**: Email Integration (Nodemailer)
 - **Architecture**: MVC (Model-View-Controller)
-- **Storage**: JSON File Persistence
-- **Tools**: Nodemon, Body-Parser, etc.
+- **Tools**: Nodemon, Body-Parser, Dotenv
 
 
 ## 📖 How to Run
@@ -46,8 +62,16 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 ### Week 1: Foundation
 *   **Day 1-2**: Mastered the core Node.js request/response lifecycle and asynchronous filesystem operations.
 *   **Day 3-4**: Transitioned to Express.js for streamlined routing and explored various Templating Engines (EJS/Pug) for dynamic UI generation.
-*   **Day 5**: Implemented proper **MVC Architecture**, decoupling data logic into Models and request handling into Controllers, while persisting data in JSON files.
-*   **Day 6**: Mastered **Dynamic Content** rendering with EJS, including partials for UI consistency and shared data state across routes.
+*   **Day 5-7**: Implemented proper **MVC Architecture**, decoupling logic into Models/Controllers, and mastered **Dynamic Content** rendering with EJS and Pug.
+
+### Week 2: Database Mastery & Sessions
+*   **Day 8-9**: Transitioned from file storage to **Relational Databases** using SQL and **Sequelize ORM**, mastering schemas and relations.
+*   **Day 10-11**: Explored **NoSQL** with MongoDB and utilized **Mongoose** for elegant data modeling and complex query handling.
+*   **Day 12**: Implemented **Sessions & Cookies** for secure state management, moving beyond local request-only state.
+*   **Day 13-14**: Built a robust **Authentication System**, including password hashing with bcrypt and **CSRF Protection** for secure form submissions.
+
+### Week 3: Production Ready Features
+*   **Day 15**: Added **Email Support** and implemented a secure **Password Reset flow** utilizing cryptographically strong tokens and expiration dates.
 
 
 ---
