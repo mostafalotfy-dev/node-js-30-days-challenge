@@ -24,7 +24,7 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 
 ### Week 3: Advanced Features
 - [x] **[Day 15](./Day%2015)**: Advanced Auth: Emails & Password Resets.
-- [ ] **Day 16**: (In Progress)
+- [x] **[Day 16](./Day%2016)**: Input Validation & Sanitization.
 
 ---
 
@@ -72,6 +72,7 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 
 ### Week 3: Production Ready Features
 *   **Day 15**: Added **Email Support** and implemented a secure **Password Reset flow** utilizing cryptographically strong tokens and expiration dates.
+*   **Day 16**: Mastered **Input Validation & Sanitization** using `express-validator`, ensuring data integrity and enhancing security across all user-facing forms.
 
 
 ---
