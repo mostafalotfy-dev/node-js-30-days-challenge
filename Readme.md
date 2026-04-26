@@ -24,7 +24,9 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 
 ### Week 3: Advanced Features
 - [x] **[Day 15](./Day%2015)**: Advanced Auth: Emails & Password Resets.
-- [x] **[Day 16](./Day%2016)**: Input Validation & Sanitization.
+- [x] **[Day 17](./Day%2017)**: Robust Error Handling & Middleware.
+- [x] **[Day 18](./Day%2018)**: File Uploads, Management & PDF Generation.
+- [x] **[Day 19](./Day%2019)**: Pagination logic for high-performance data fetching.
 
 ---
 
@@ -36,6 +38,8 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 - **Security**: CSRF Protection, Password Hashing (bcrypt)
 - **Session Management**: express-session with MongoDB storage
 - **Communication**: Email Integration (Nodemailer)
+- **File Handling**: Multer for uploads and image management
+- **PDF Generation**: PDFKit for dynamic document creation
 - **Architecture**: MVC (Model-View-Controller)
 - **Tools**: Nodemon, Body-Parser, Dotenv
 
@@ -71,8 +75,10 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 *   **Day 13-14**: Built a robust **Authentication System**, including password hashing with bcrypt and **CSRF Protection** for secure form submissions.
 
 ### Week 3: Production Ready Features
-*   **Day 15**: Added **Email Support** and implemented a secure **Password Reset flow** utilizing cryptographically strong tokens and expiration dates.
-*   **Day 16**: Mastered **Input Validation & Sanitization** using `express-validator`, ensuring data integrity and enhancing security across all user-facing forms.
+*   **Day 15-16**: Added **Email Support**, a secure **Password Reset flow**, and mastered **Input Validation** using `express-validator`.
+*   **Day 17**: Implemented robust **Error Handling** middleware to manage both synchronous and asynchronous errors gracefully.
+*   **Day 18**: Integrated **File Uploads** with Multer, managed file storage, and implemented on-the-fly **PDF Generation** with PDFKit.
+*   **Day 19**: Mastered **Pagination** to efficiently handle large datasets by fetching only the required chunks of data from the database.
 
 
 ---
