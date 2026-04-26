@@ -1,0 +1,12 @@
+<div class="pagination">
+   
+    <a href="?page=1">1</a>
+    <% if(hasPreviousPage){ %>
+        <a href="?page=<%= previousPage %>">Previous</a>
+        <% } %>
+            <% if(hasNextPage){ %>
+                <a href="?page=<%= nextPage %>">Next</a>
+                <% } %>
+        <a href="?page=<%= lastPage %>">Last Page</a>
+
+</div>

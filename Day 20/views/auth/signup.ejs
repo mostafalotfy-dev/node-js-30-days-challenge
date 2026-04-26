@@ -1,0 +1,39 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if(errors.length > 0) { %>
+            <div class="user-message centered">
+                <ul>
+                    <% for(let error of errors) { %>
+                        <li><%= error.msg %></li>
+                    <% } %>
+                </ul>
+            </div>
+        <% } %>
+        <form class="login-form" action="/signup" method="POST" novalidate>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-control">
+                <label for="email">E-Mail</label>
+                <input type="email" class="<%= validationErrors.find(e=>e.path==='email') ? 'invalid' : '' %>" name="email" id="email" value="<%= oldInput.email %>">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" class="<%= validationErrors.find(e=>e.path==='password') ? 'invalid' : '' %>" name="password" id="password">
+            </div>
+            <div class="form-control">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="<%= validationErrors.find(e=>e.path==='confirmPassword') ? 'invalid' : '' %>" name="confirmPassword" id="confirmPassword">
+            </div>
+            <button class="btn" type="submit">Signup</button>
+        </form>
+        <div class="centered">
+            <a href="/reset-password">Reset Password</a>
+        </div>
+    </main>
+<%- include('../includes/end.ejs') %>

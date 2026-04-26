@@ -1,0 +1,13 @@
+<%- include('includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+    <h1>Some thing went wrong!</h1>
+    <p><%= error.message %></p>
+
+    <% if(process.env.NODE_ENV === 'development') { %>
+        <p><%= error.stack %></p>
+    <% } %>
+
+<%- include('includes/end.ejs') %>

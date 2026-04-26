@@ -27,6 +27,7 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 - [x] **[Day 17](./Day%2017)**: Robust Error Handling & Middleware.
 - [x] **[Day 18](./Day%2018)**: File Uploads, Management & PDF Generation.
 - [x] **[Day 19](./Day%2019)**: Pagination logic for high-performance data fetching.
+- [x] **[Day 20](./Day%2020)**: Asynchronous Requests (AJAX/Fetch API) for seamless UX.
 
 ---
 
@@ -79,6 +80,7 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 *   **Day 17**: Implemented robust **Error Handling** middleware to manage both synchronous and asynchronous errors gracefully.
 *   **Day 18**: Integrated **File Uploads** with Multer, managed file storage, and implemented on-the-fly **PDF Generation** with PDFKit.
 *   **Day 19**: Mastered **Pagination** to efficiently handle large datasets by fetching only the required chunks of data from the database.
+*   **Day 20**: Implemented **Asynchronous Requests** (AJAX/Fetch API) to delete items without page reloads, significantly improving the user experience.
 
 
 ---
