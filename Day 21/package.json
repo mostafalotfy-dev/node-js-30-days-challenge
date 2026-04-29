@@ -1,0 +1,39 @@
+{
+  "name": "nodejs-complete-guide",
+  "version": "1.0.0",
+  "description": "Complete Node.js Guide",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "Mostafa Lotfy",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
+    "csurf": "^1.11.0",
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "express-handlebars": "^9.0.1",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
+    "form-data": "^4.0.5",
+    "mailersend": "^2.8.0",
+    "mailgun.js": "^13.0.0",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.5.0",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.5",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "pdfkit": "^0.18.0",
+    "pug": "^3.0.4",
+    "stripe": "^22.1.0"
+  }
+}
