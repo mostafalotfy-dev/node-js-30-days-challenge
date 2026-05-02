@@ -84,6 +84,9 @@ A comprehensive 30-day journey to mastering Node.js, from core concepts to build
 *   **Day 20**: Implemented **Asynchronous Requests** (AJAX/Fetch API) to delete items without page reloads, significantly improving the user experience.
 *   **Day 21**: Integrated **Stripe Payments** to handle checkout sessions and secure transactions.
 
+### Week 4: Modern APIs & Decoupled Architecture
+*   **Day 22**: Implemented **REST APIs** to handle data requests and responses.
+
 
 ---
 *Follow my journey as I build and learn Node.js in 30 days!*
